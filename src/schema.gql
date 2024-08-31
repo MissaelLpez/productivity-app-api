@@ -28,5 +28,28 @@ scalar DateTime
 type Query {
   helloWorld: String!
   getAllTasks: [Task!]!
-  getTaskById(id: Float!): Task!
+  getTaskById(taskId: Float!): Task!
+}
+
+type Mutation {
+  createTask(createTaskInput: CreateTaskInput!): Task!
+  updateTask(updateTaskInput: UpdateTaskInput!): Task!
+  deleteTask(taskId: Float!): Task!
+}
+
+input CreateTaskInput {
+  name: String!
+  description: String!
+  defined_time: String!
+}
+
+input UpdateTaskInput {
+  id: Int!
+  name: String
+  description: String
+  status: Status
+  defined_time: String
+  started_at: DateTime
+  completed_at: DateTime
+  paused_in: String
 }
