@@ -25,7 +25,7 @@ export class Task {
   completed_at?: Date;
 
   @Field(() => String, { nullable: true })
-  paused_in?: bigint;
+  paused_in?: string;
 
   @Field(() => Int)
   list_number: number;

@@ -9,4 +9,8 @@ export class TaskService {
   async getAllTasks(): Promise<Task[]> {
     return this.prisma.task.findMany();
   }
+
+  async getTaskById(id: number): Promise<Task> {
+    return this.prisma.task.findFirst({ where: { id } });
+  }
 }

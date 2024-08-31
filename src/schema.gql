@@ -28,4 +28,5 @@ scalar DateTime
 type Query {
   helloWorld: String!
   getAllTasks: [Task!]!
+  getTaskById(id: Float!): Task!
 }
