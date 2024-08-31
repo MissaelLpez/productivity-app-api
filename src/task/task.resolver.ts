@@ -1,6 +1,7 @@
 import { BadRequestException } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CreateTaskInput } from './dto/inputs/create-task.input';
+import { NewOrderInput } from './dto/inputs/reorder-task.input';
 import { UpdateTaskInput } from './dto/inputs/update-task.input';
 import { Task } from './entities/task.entity';
 import { TaskService } from './task.service';
@@ -37,6 +38,14 @@ export class TaskResolver {
     @Args('updateTaskInput') updateTaskInput: UpdateTaskInput,
   ): Promise<Task> {
     return this.taskService.updateTask(updateTaskInput);
+  }
+
+  @Mutation(() => [Task])
+  async reorderTasks(
+    @Args({ name: 'newOrder', type: () => [NewOrderInput] })
+    newOrder: NewOrderInput[],
+  ): Promise<Task[]> {
+    return this.taskService.reorderTasks(newOrder);
   }
 
   @Mutation(() => Task)

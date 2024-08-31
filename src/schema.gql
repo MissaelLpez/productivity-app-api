@@ -34,6 +34,7 @@ type Query {
 type Mutation {
   createTask(createTaskInput: CreateTaskInput!): Task!
   updateTask(updateTaskInput: UpdateTaskInput!): Task!
+  reorderTasks(newOrder: [NewOrderInput!]!): [Task!]!
   deleteTask(taskId: Float!): Task!
 }
 
@@ -52,4 +53,9 @@ input UpdateTaskInput {
   started_at: DateTime
   completed_at: DateTime
   paused_in: String
+}
+
+input NewOrderInput {
+  id: Int!
+  list_number: Int!
 }
