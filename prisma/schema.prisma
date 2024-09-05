@@ -21,7 +21,7 @@ model Task {
   defined_time String
   started_at   DateTime?
   completed_at DateTime?
-  paused_in    String?
+  paused_in    DateTime?
   list_number  Int       @default(autoincrement())
 
   @@map(name: "tasks")
@@ -30,5 +30,7 @@ model Task {
 enum Status {
   todo
   in_progress
+  paused
+  continuing
   completed
 }

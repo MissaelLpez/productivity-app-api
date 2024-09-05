@@ -24,8 +24,8 @@ export class Task {
   @Field(() => Date, { nullable: true })
   completed_at?: Date;
 
-  @Field(() => String, { nullable: true })
-  paused_in?: string;
+  @Field(() => Date, { nullable: true })
+  paused_in?: Date;
 
   @Field(() => Int)
   list_number: number;

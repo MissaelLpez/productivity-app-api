@@ -10,13 +10,15 @@ type Task {
   defined_time: String!
   started_at: DateTime
   completed_at: DateTime
-  paused_in: String
+  paused_in: DateTime
   list_number: Int!
 }
 
 enum Status {
   todo
   in_progress
+  paused
+  continuing
   completed
 }
 
@@ -52,7 +54,7 @@ input UpdateTaskInput {
   defined_time: String
   started_at: DateTime
   completed_at: DateTime
-  paused_in: String
+  paused_in: DateTime
 }
 
 input NewOrderInput {

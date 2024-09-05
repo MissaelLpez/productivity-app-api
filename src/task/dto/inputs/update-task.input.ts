@@ -32,10 +32,8 @@ export class UpdateTaskInput {
   @Field(() => Date, { nullable: true })
   completed_at?: Date;
 
-  @Field(() => String, { nullable: true })
-  @IsString()
-  @MaxLength(7)
-  paused_in?: string;
+  @Field(() => Date, { nullable: true })
+  paused_in?: Date;
 }
 
 registerEnumType(Status, {
