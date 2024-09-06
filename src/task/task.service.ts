@@ -170,4 +170,9 @@ export class TaskService {
 
     return stats;
   }
+
+  async deleteAllTasks(): Promise<string> {
+    await this.prisma.task.deleteMany();
+    return 'success';
+  }
 }

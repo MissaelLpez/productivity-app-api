@@ -66,6 +66,7 @@ type Mutation {
   updateTask(updateTaskInput: UpdateTaskInput!): Task!
   reorderTasks(newOrder: [NewOrderInput!]!): [Task!]!
   deleteTask(taskId: Float!): Task!
+  deleteAllTasks: String!
 }
 
 input CreateTaskInput {

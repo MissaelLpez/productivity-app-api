@@ -57,4 +57,9 @@ export class TaskResolver {
   async getStats(): Promise<Stats> {
     return this.taskService.getStats();
   }
+
+  @Mutation(() => String)
+  async deleteAllTasks(): Promise<string> {
+    return this.taskService.deleteAllTasks();
+  }
 }
