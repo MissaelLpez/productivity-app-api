@@ -75,7 +75,9 @@ export class TaskService {
   }
 
   async getStats(): Promise<Stats> {
-    const tasks = await this.prisma.task.findMany();
+    const tasks = await this.prisma.task.findMany({
+      where: { status: 'completed' },
+    });
 
     const taskOrderByQuickly = tasks
       .map((task) => ({
