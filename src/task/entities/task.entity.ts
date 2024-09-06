@@ -21,6 +21,9 @@ export class Task {
   @Field(() => String)
   redefined_time: string;
 
+  @Field(() => String, { nullable: true })
+  remaining_time: string;
+
   @Field(() => Date, { nullable: true })
   started_at?: Date;
 

@@ -9,6 +9,7 @@ type Task {
   status: Status!
   defined_time: String!
   redefined_time: String!
+  remaining_time: String
   started_at: DateTime
   finish_in: DateTime
   completed_at: DateTime
@@ -56,6 +57,7 @@ input UpdateTaskInput {
   status: Status
   defined_time: String
   redefined_time: String
+  remaining_time: String
   started_at: DateTime
   finish_in: DateTime
   completed_at: DateTime
