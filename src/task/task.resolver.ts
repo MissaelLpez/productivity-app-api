@@ -3,7 +3,7 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CreateTaskInput } from './dto/inputs/create-task.input';
 import { NewOrderInput } from './dto/inputs/reorder-task.input';
 import { UpdateTaskInput } from './dto/inputs/update-task.input';
-import { Task } from './entities/task.entity';
+import { Stats, Task } from './entities/task.entity';
 import { TaskService } from './task.service';
 
 @Resolver(() => Task)
@@ -51,5 +51,10 @@ export class TaskResolver {
   @Mutation(() => Task)
   async deleteTask(@Args('taskId') taskId: number): Promise<Task> {
     return this.taskService.deleteTask(taskId);
+  }
+
+  @Query(() => Stats)
+  async getStats(): Promise<Stats> {
+    return this.taskService.getStats();
   }
 }

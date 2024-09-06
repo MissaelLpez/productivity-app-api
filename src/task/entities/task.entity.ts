@@ -1,6 +1,13 @@
-import { Field, Int, ObjectType, registerEnumType } from '@nestjs/graphql';
+import {
+  Field,
+  Float,
+  Int,
+  ObjectType,
+  registerEnumType,
+} from '@nestjs/graphql';
 import { Status } from '@prisma/client';
 
+// Define la entidad para la tarea
 @ObjectType()
 export class Task {
   @Field(() => Int)
@@ -43,3 +50,53 @@ export class Task {
 registerEnumType(Status, {
   name: 'Status',
 });
+
+// Define la entidad para clasificar las tareas
+@ObjectType()
+export class TaskCategories {
+  @Field(() => Int)
+  short: number;
+
+  @Field(() => Int)
+  medium: number;
+
+  @Field(() => Int)
+  long: number;
+}
+
+// Define la entidad para los días con conteo
+@ObjectType()
+export class DayCount {
+  @Field(() => String)
+  date: string;
+
+  @Field(() => Int)
+  count: number;
+}
+
+@ObjectType()
+export class WeekStats {
+  @Field(() => String)
+  weekStart: string;
+
+  @Field(() => [DayCount])
+  days: DayCount[];
+}
+
+@ObjectType()
+export class Stats {
+  @Field(() => Task)
+  shortestTask: Task;
+
+  @Field(() => Task)
+  longestTask: Task;
+
+  @Field(() => Float)
+  averageCompletionTime: number;
+
+  @Field(() => TaskCategories)
+  taskCategories: TaskCategories;
+
+  @Field(() => [WeekStats])
+  tasksCompletedByWeek: WeekStats[];
+}
