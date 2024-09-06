@@ -26,8 +26,16 @@ export class UpdateTaskInput {
   @MaxLength(7)
   defined_time: string;
 
+  @Field(() => String, { nullable: true })
+  @IsString()
+  @MaxLength(7)
+  redefined_time: string;
+
   @Field(() => Date, { nullable: true })
   started_at?: Date;
+
+  @Field(() => Date, { nullable: true })
+  finish_in?: Date;
 
   @Field(() => Date, { nullable: true })
   completed_at?: Date;

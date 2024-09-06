@@ -22,6 +22,29 @@ export class TaskService {
   }
 
   async updateTask(taskInput: UpdateTaskInput): Promise<Task> {
+    const task = await this.prisma.task.findUnique({
+      where: { id: taskInput.id },
+    });
+
+    if (
+      taskInput.status === 'continuing' ||
+      taskInput.status === 'in_progress'
+    ) {
+      const date = new Date();
+
+      const newFinishDate = new Date(
+        Number(date) + Number(task.redefined_time),
+      );
+
+      return this.prisma.task.update({
+        data: {
+          ...taskInput,
+          finish_in: newFinishDate,
+        },
+        where: { id: taskInput.id },
+      });
+    }
+
     return this.prisma.task.update({
       data: taskInput,
       where: { id: taskInput.id },

@@ -18,8 +18,14 @@ export class Task {
   @Field(() => String)
   defined_time: string;
 
+  @Field(() => String)
+  redefined_time: string;
+
   @Field(() => Date, { nullable: true })
   started_at?: Date;
+
+  @Field(() => Date, { nullable: true })
+  finish_in?: Date;
 
   @Field(() => Date, { nullable: true })
   completed_at?: Date;

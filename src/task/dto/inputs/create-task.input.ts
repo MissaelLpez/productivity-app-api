@@ -19,4 +19,10 @@ export class CreateTaskInput {
   @IsNotEmpty()
   @MaxLength(7)
   defined_time: string;
+
+  @Field(() => String)
+  @IsString()
+  @IsNotEmpty()
+  @MaxLength(7)
+  redefined_time: string;
 }

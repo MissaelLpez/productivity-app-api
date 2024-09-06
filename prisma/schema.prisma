@@ -14,15 +14,17 @@ datasource db {
 }
 
 model Task {
-  id           Int       @id @default(autoincrement())
-  name         String
-  description  String?
-  status       Status    @default(todo)
-  defined_time String
-  started_at   DateTime?
-  completed_at DateTime?
-  paused_in    DateTime?
-  list_number  Int       @default(autoincrement())
+  id             Int       @id @default(autoincrement())
+  name           String
+  description    String?
+  status         Status    @default(todo)
+  defined_time   String
+  redefined_time String
+  started_at     DateTime?
+  finish_in      DateTime?
+  completed_at   DateTime?
+  paused_in      DateTime?
+  list_number    Int       @default(autoincrement())
 
   @@map(name: "tasks")
 }

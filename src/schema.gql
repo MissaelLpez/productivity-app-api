@@ -8,7 +8,9 @@ type Task {
   description: String
   status: Status!
   defined_time: String!
+  redefined_time: String!
   started_at: DateTime
+  finish_in: DateTime
   completed_at: DateTime
   paused_in: DateTime
   list_number: Int!
@@ -44,6 +46,7 @@ input CreateTaskInput {
   name: String!
   description: String!
   defined_time: String!
+  redefined_time: String!
 }
 
 input UpdateTaskInput {
@@ -52,7 +55,9 @@ input UpdateTaskInput {
   description: String
   status: Status
   defined_time: String
+  redefined_time: String
   started_at: DateTime
+  finish_in: DateTime
   completed_at: DateTime
   paused_in: DateTime
 }
