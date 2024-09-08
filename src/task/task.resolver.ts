@@ -62,4 +62,9 @@ export class TaskResolver {
   async deleteAllTasks(): Promise<string> {
     return this.taskService.deleteAllTasks();
   }
+
+  @Mutation(() => String)
+  async createManyTasks(): Promise<string> {
+    return this.taskService.createManyTasks();
+  }
 }
