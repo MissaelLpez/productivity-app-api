@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Status, Task } from '@prisma/client';
 import {
+  compareAsc,
   eachDayOfInterval,
   format,
   isAfter,
@@ -156,19 +157,30 @@ export class TaskService {
       }
     });
 
+    const currentWeekStart = format(startOfWeek(today), 'yyyy-MM-dd');
+
+    // Modificación de ordenación
+    const orderedTasksCompletedByWeek = Object.entries(tasksCompletedByWeek)
+      .map(([weekStart, days]) => ({
+        weekStart,
+        days: days.sort(
+          (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+        ),
+      }))
+      .sort((a, b) => {
+        // Asegurarse de que la semana actual esté primero
+        if (a.weekStart === currentWeekStart) return -1;
+        if (b.weekStart === currentWeekStart) return 1;
+        // Para otras semanas, ordenar de manera ascendente
+        return compareAsc(new Date(a.weekStart), new Date(b.weekStart));
+      });
+
     const stats = {
       shortestTask: taskOrderByQuickly[0],
       longestTask: taskOrderByQuickly[taskOrderByQuickly.length - 1],
       averageCompletionTime: averageCompletionTime,
       taskCategories: taskCategories,
-      tasksCompletedByWeek: Object.entries(tasksCompletedByWeek).map(
-        ([weekStart, days]) => ({
-          weekStart,
-          days: days.sort(
-            (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
-          ),
-        }),
-      ),
+      tasksCompletedByWeek: orderedTasksCompletedByWeek,
     };
 
     return stats;
@@ -181,17 +193,6 @@ export class TaskService {
 
   async createManyTasks(): Promise<string> {
     const tasks = [
-      {
-        name: 'Probar funcionamiento App',
-        description: 'Probar funcionamiento de la app',
-        status: Status.todo,
-        defined_time: '1800000', // 15 minutos
-        redefined_time: '1800000',
-        remaining_time: null,
-        started_at: null,
-        completed_at: null,
-        paused_in: null,
-      },
       {
         name: 'Eliminar Tarea',
         description: 'Opción para eliminar una tarea',
@@ -523,8 +524,19 @@ export class TaskService {
         defined_time: '3600000', // 60 minutos
         redefined_time: '3600000',
         remaining_time: '0',
-        started_at: '2024-09-07T16:30:00.000Z',
-        completed_at: '2024-09-07T17:30:00.000Z',
+        started_at: '2024-09-08T16:30:00.000Z',
+        completed_at: '2024-09-08T17:30:00.000Z',
+        paused_in: null,
+      },
+      {
+        name: 'Probar funcionamiento App',
+        description: 'Probar funcionamiento de la app',
+        status: Status.todo,
+        defined_time: '1800000', // 15 minutos
+        redefined_time: '1800000',
+        remaining_time: null,
+        started_at: null,
+        completed_at: null,
         paused_in: null,
       },
     ];
