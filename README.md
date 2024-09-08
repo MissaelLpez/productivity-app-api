@@ -1,85 +1,74 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Productivity App GraphQL API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+![image](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![image](https://img.shields.io/badge/nestjs-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
+![image](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+![image](https://img.shields.io/badge/Apollo%20GraphQL-311C87?&style=for-the-badge&logo=Apollo%20GraphQL&logoColor=white)
+![image](https://img.shields.io/badge/GraphQl-E10098?style=for-the-badge&logo=graphql&logoColor=white)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Este es el backend de la aplicación Productivity App, construido con NestJS, Prisma ORM, Apollo, y GraphQL. Esta API proporciona los endpoints necesarios para gestionar tareas y datos.
 
-## Description
+## Tecnologías Utilizadas
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **NestJS**: Un framework de Node.js para construir aplicaciones del lado del servidor eficientes y escalables.
+- **Prisma ORM**: Un ORM moderno y de tipo seguro para TypeScript y Node.js, utilizado para gestionar la base de datos.
+- **Apollo Server**: Una implementación de servidor GraphQL que permite construir un API flexible y escalable.
+- **GraphQL**: Un lenguaje de consulta para tu API que permite obtener solo los datos necesarios.
 
-## Project setup
+## Requisitos Previos
 
-```bash
-$ npm install
-```
+- Node.js y npm instalados.
+- Una base de datos PostgreSQL (u otro tipo soportado por Prisma) configurada y accesible.
 
-## Compile and run the project
+## Instalación y Configuración
 
-```bash
-# development
-$ npm run start
+Para configurar y ejecutar este proyecto localmente, sigue los siguientes pasos:
 
-# watch mode
-$ npm run start:dev
+1. **Clonar el repositorio:**
 
-# production mode
-$ npm run start:prod
-```
+   ```bash
+   git clone https://github.com/MissaelLpez/productivity-app-api.git
+   cd api-repo
+   ```
 
-## Run tests
+2. **Configurar las variables de entorno:**
 
-```bash
-# unit tests
-$ npm run test
+   Crea un archivo `.env` en la raíz del proyecto y agrega la URL de conexión de tu base de datos:
 
-# e2e tests
-$ npm run test:e2e
+   ```bash
+   DATABASE_URL="postgresql://usuario:contraseña@localhost:5432/nombre_base_datos"
+   ```
 
-# test coverage
-$ npm run test:cov
-```
+   Asegúrate de reemplazar con tus credenciales de base de datos reales.
 
-## Resources
+3. **Instalar las dependencias:**
 
-Check out a few resources that may come in handy when working with NestJS:
+   ```bash
+   npm install
+   ```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+4. **Ejecutar las migraciones de la base de datos:**
 
-## Support
+   ```bash
+   npx prisma migrate deploy
+   ```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+   Esto aplicará todas las migraciones necesarias a la base de datos configurada.
 
-## Stay in touch
+5. **Ejecutar la aplicación en modo desarrollo:**
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+   ```bash
+   npm run start:dev
+   ```
 
-## License
+   La API estará disponible en http://localhost:3000/graphql.
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## Prueba la Aplicación Frontend
+
+El repositorio del frontend de la Productivity App que utiliza esta API está disponible en el siguiente enlace:
+
+[Repositorio del Frontend - Productivity App](https://github.com/MissaelLpez/productivity-app-client)
+
+## Contacto
+
+Si tienes alguna pregunta o sugerencia, no dudes en contactarme a missaellpez@gmail.com
